@@ -27,7 +27,6 @@ const Selector = styled.select`
 
 export const OptionSelector = ({ animals, selections }) => (
     <Selector>
-        {console.log(animals)}
         {animals
             ? animals.map((select, index) => (
                   <option key={select.id} value={select.name}>
