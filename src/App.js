@@ -1,30 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import getData from './components/cat';
-import './App.css';
+import React, { Component } from "react";
+import keys from "./apikeys";
+import axios from "axios";
 
-function App() {
-   console.log(getData()())
-  return (
-    <div className="App">
-    
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-     
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      cats: []
+    };
+  }
+
+  componentDidMount() {
+    axios({
+      method: "get",
+      url: `https://api.thecatapi.com/v1/images/search?limit=20&page=10&order=Desc`,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "x-api-key": `${keys.cat}`
+      }
+    })
+      .then(({ data }) => data)
+      .then(cats => this.setState({ cats }));
+  }
+  
+  render() {
+    const { cats } = this.state;
+    console.log(cats)
+    return (
+      <div className="App">
+        <p>Cat application</p>
+        {cats.map((cat, keys) => (
+          <img src={cat.url} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default App;
