@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Selector = styled.select`
     -webkit-appearance: none;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #4d4d4d;
+    border-bottom: 1px solid var(--black);
     border-radius: 0;
     display: block;
-    font-size: 2.4em;
+    font-size: 1.6em;
     position: relative;
-    min-width: 20em;
+    min-width: 0.2em;
     min-height: 2em;
     line-height: 1.2;
     text-align-last: center;
@@ -18,18 +18,19 @@ const Selector = styled.select`
     option {
         background-color: transparent;
         text-align: center;
-        position: absolute;
-        -webkit-appearance: none;
-        moz-appearance: none;
-        appearance: none;
     }
-`
+`;
 
-export const OptionSelector = ({ animals, selections }) => (
-    <Selector>
+export const OptionSelector = ({
+    animals,
+    selections,
+    queries,
+    handleChange
+}) => (
+    <Selector value={queries} onChange={handleChange}>
         {animals
             ? animals.map((select, index) => (
-                  <option key={select.id} value={select.name}>
+                  <option key={select.id} value={select.id}>
                       {select.name}
                   </option>
               ))
@@ -39,7 +40,7 @@ export const OptionSelector = ({ animals, selections }) => (
                   </option>
               ))}
     </Selector>
-)
+);
 
 OptionSelector.defaultProps = {
     selections: [
@@ -60,5 +61,5 @@ OptionSelector.defaultProps = {
             value: 'breed3'
         }
     ]
-}
-export default OptionSelector
+};
+export default OptionSelector;
