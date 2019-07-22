@@ -8,7 +8,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-image-gallery": "^0.8.18",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "scss": "^0.2.4",
     "styled-components": "^4.3.2"
   },
   "scripts": {
@@ -29,7 +31,7 @@
   "prettier": {
     "trailingComma": "none",
     "tabWidth": 4,
-    "semi": false,
+    "semi": true,
     "singleQuote": true
   },
   "browserslist": {
