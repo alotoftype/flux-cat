@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
@@ -23,7 +23,7 @@ const Nav = styled.nav`
 const Navigation = ({ links }) => (
     <Nav>
         {links.map(link => (
-            <Link className="link" to={link.url}>
+            <Link key={link.id} className="link" to={link.url}>
                 {link.name}
             </Link>
         ))}

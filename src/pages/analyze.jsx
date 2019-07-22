@@ -42,10 +42,21 @@ class Analayze extends Component {
                 this.setState({ breeds });
             });
     }
+    sortCats = (sort = 'Desc', breed_id = 'abys') => {
+        axios({
+            method: 'get',
+            url: `https://api.thecatapi.com/v1/images/search?size=full&mime_types=jpg&limit=5&order=${sort}&breed_ids=${breed_id}`,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'x-api-key': `${cat_key}`
+            }
+        })
+            .then(({ data }) => data)
+            .then(cats => this.setState({ cats }));
+    };
     render() {
         const { cats, breeds } = this.state;
-        console.log(cats);
-        console.log('this is my cat apikey: ', keys.cat);
+        //console.log(cats);
         return (
             <>
                 <Layout pageTitle="Analyze The Cats" links={page_links}>
