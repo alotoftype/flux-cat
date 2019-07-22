@@ -14,3 +14,21 @@ Display all images in the ranked order, preferably in the size of the slot and t
 Feel free to use frameworks such as Vue.js/React/Angular/jQuery or vanilla JS as you see fit.
 
 Estimated time to spend: _4 hours_.
+
+### CheckList 
+
+[x] Create two pages  
+[x] Create a page that allows you to cycle through photos by selected breed.   
+[x] Create a page that allows you to render a page of ten images. This page should also allow you to sort by Ascending or Descending. This should also allow you to choose by breed.
+
+[ ] Provide an input to allow a user to provide a slot for functionality which allows for width and height 
+[ ]Functionality that compares image aspect ratio to provided aspect ratio.
+[ ]Functionality that compares images to provided width and height
+
+### Concerns  
+I implimented the sort functionality but it does not actually sort the current listing of cats. It makes a request and provides a sorted query. I would refactor this. 
+
+I would take more time to setup a visual system. I have utilized both scss and styled componenets to show that I am adept at using both. I would however use one or the other and not both.
+
+I have some additional questions regarding choosing the slot for the aspect ratio. I am having a bit of difficulty with the functionality for the aspect ratio comparison and I would have been able to figure out if I had more time. 
+
