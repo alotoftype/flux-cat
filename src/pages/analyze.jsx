@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import keys from '../utils/apikeys';
 import Layout from '../components/layout';
 import OptionSelector from '../components/optionSelect';
+import SortSelector from '../components/sortSelector';
 import Image from '../components/imageCard';
 import page_links from '../components/page_links';
 
@@ -13,6 +14,7 @@ class Analayze extends Component {
     state = {
         breed: [],
         cats: [],
+        sortValue: '',
         queries: ''
     };
 
@@ -54,13 +56,26 @@ class Analayze extends Component {
             .then(({ data }) => data)
             .then(cats => this.setState({ cats }));
     };
+
+    handleChangeBreed = e => {
+        this.setState({ queries: e.target.value });
+        this.sortCats(this.state.sortValue, this.state.queries);
+    };
+    handleChangeSort = e => {
+        this.setState({ sort: e.target.value });
+        this.sortCats(this.state.sortValue, this.state.queries);
+    };
     render() {
         const { cats, breeds } = this.state;
         //console.log(cats);
         return (
             <>
                 <Layout pageTitle="Analyze The Cats" links={page_links}>
-                    <OptionSelector animals={breeds} />
+                    <OptionSelector
+                        animals={breeds}
+                        handleChange={this.handleChangeBreed}
+                    />
+                    <SortSelector handleChange={this.handleChangeSort} />
                     <DisplayCats>
                         {cats.map(cat => (
                             <Image key={cat.id} animal={cat} />
