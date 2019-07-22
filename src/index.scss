@@ -1,0 +1,26 @@
+:root {
+    --background: #484d5c;
+    --headerColor: #ffce00;
+    --primaryFont: #c0ccd4;
+    --black: #050404;
+    --white: #ffffff;
+    --grey: #cecece;
+    --red: #a8002d;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 62.5%;
+}
+#root {
+    width: 100%;
+}
+@import './styles/styles';
