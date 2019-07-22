@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import keys from '../utils/apikeys';
 import Layout from '../components/layout';
+import OptionSelector from '../components/optionSelect';
 import Image from '../components/imageCard';
+import page_links from '../components/page_links';
 
 const cat_key = keys.cat;
+
 class Analayze extends Component {
-    constructor() {
-        super();
-    }
     state = {
         breed: [],
         cats: [],
@@ -44,19 +45,25 @@ class Analayze extends Component {
     render() {
         const { cats, breeds } = this.state;
         console.log(cats);
+        console.log('this is my cat apikey: ', keys.cat);
         return (
             <>
-                <Layout pageTitle="Analyze The Cats">
-                    <section className="displayCats">
-                        <p>some stuff here</p>
+                <Layout pageTitle="Analyze The Cats" links={page_links}>
+                    <OptionSelector animals={breeds} />
+                    <DisplayCats>
                         {cats.map(cat => (
                             <Image key={cat.id} animal={cat} />
                         ))}
-                    </section>
+                    </DisplayCats>
                 </Layout>
             </>
         );
     }
 }
-
+const DisplayCats = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+`;
 export default Analayze;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.main`
     width: 100%;
+    font-family: 'Cardo';
 
     @media screen and (min-width: 768px) {
         max-width: 128em;

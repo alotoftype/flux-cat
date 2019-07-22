@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import keys from '../utils/apikeys';
 import ImageGallery from 'react-image-gallery';
-import Wrapper from '../components/wrapper';
-import Title from '../components/title';
+import Layout from '../components/layout';
 import OptionSelector from '../components/optionSelect';
+import page_links from '../components/page_links';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 const cat_key = keys.cat;
@@ -41,12 +41,10 @@ class Catview extends Component {
         })
             .then(({ data }) => data)
             .then(breeds => {
-                console.log(breeds);
                 this.setState({ breeds });
             });
     }
     handleChange = e => {
-        console.log(e.target.value, `this button was selected`);
         this.setState({ queries: e.target.value });
         this.getCatbyBreed(this.state.queries);
     };
@@ -83,11 +81,9 @@ class Catview extends Component {
         });
 
         return (
-            <div className="App">
-                <Title text={'Cat Application'} />
-                <Wrapper>
+            <>
+                <Layout pageTitle="Cat Application" links={page_links}>
                     <section>
-                        <h1>Select Your Breed</h1>
                         <OptionSelector
                             animals={breeds}
                             queries={queries}
@@ -102,8 +98,8 @@ class Catview extends Component {
                             showThumbnails={false}
                         />
                     </section>
-                </Wrapper>
-            </div>
+                </Layout>
+            </>
         );
     }
 }
